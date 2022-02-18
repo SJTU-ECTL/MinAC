@@ -45,7 +45,7 @@ Reference papers:
 - `errorBound e_b` : the MED error bound of the approximate 4-2 compressors.  
 In our experiment, the inputs are set as uniformly distributed. Thus, the error bound `errorBound e_b` is represented as `e_b/256`, where the numerator is an integer. For each existing design, we calculate its MED e_b. Then, MinAC is applied to synthesize approximate 4-2 compressors with MED no more than e_b.  Below is the MED of approximate 4-2 compressors from Reference papers.
    ```
-   approximate 4-2 compressors    MED
+   approximate 4-2 compressors    MED `e_b`
     -------------------------------------
     Momeni[3]                    100
     Venka[4]                     37
@@ -59,5 +59,63 @@ In our experiment, the inputs are set as uniformly distributed. Thus, the error 
     Ahma[8]                      55
     Strollo[9]                   4
    ```
+   
+ ## Program Organization
+
+```
+<program_dir>
+| readme.md
+|----src
+|     |----(source files)
+|----gate_library_MinAC
+|     |----nangate_45nm_typ.lib
+|     |----gate_multiple_output.txt(the gate library after extending nangate_45nm_typ.lib)
+|----input_dir
+|     |----vector42.txt (the PO number, PI number, and the truth table of the exact 4-2 compressor)
+|----temp_dir
+|     |----(temporary files)
+|----output_dir
+|     |----medBound116
+|     |     |----solution0.v
+|     |     |----summary0.txt
+|     |     |----solution1.v
+|     |     |----summary1.txt
+|     |     |----bestSol_summary.txt
+|     |----medBound100
+|     |     |----solution0.v
+|     |     |----summary0.txt
+|     |     |----solution1.v
+|     |     |----summary1.txt
+|     |     |----bestSol_summary.txt
+|     |----(and so on)
+|----examples_demo_results
+|     |----medBound116
+|     |     |----solution0.v
+|     |     |----summary0.txt
+|     |     |----solution1.v
+|     |     |----summary1.txt
+|     |     |----bestSol_summary.txt
+|     |----medBound100
+|     |     |----solution0.v
+|     |     |----summary0.txt
+|     |     |----solution1.v
+|     |     |----summary1.txt
+|     |     |----bestSol_summary.txt
+|     |----(and so on)
+```
+
+- `src`: contains all source files and header files.
+- `gate_library`: contains the nangate_45nm_typ.lib and gate_multiple_output.txt. The file gate_multiple_output.txt is the gate library after extending nangate_45nm_typ.lib. For a gate with the fanin number less than4, it is extended to a 4-input gate with some fake fanins.
+- `FVnm`: contains the initial feature vectors of different degrees and precisions for all benchmark functions.
+   Format of each row in the `bm_id_under_test`.txt file:
+```
+   degree n precision m feature vector
+```
+- `temp_dir`: contains temporary files generated during the running of the program.
+- `output_dir`: contains two sub-folders, i.e., `error_ratio2` and `error_ratio5`. `error_ratio2` contains the output files for all the benchmarks with error ratio 0.02 in each sub-folder such as `bm1`, `bm2`, etc., while `error_ratio5` contains the output files for all the benchmarks with error ratio 0.05 used in each sub-folder such as `bm1`, `bm2`, etc..
+  The output files are:
+  - `<bm_name>-bestSol_summary.txt`: overall summary of the best solution with minimal area for `<bm_name>`.
+  - `<bm_name>-solution<num>.v`: gate-level Verilog file for the solution with number `<num>`.
+- `examples_demo_results`: contains output results for all benchmarks with different error ratios. It contains two sub-folders, i.e., `error_ratio2` and `error_ratio5`. `error_ratio2` contains the output files for all the benchmarks with error ratio 0.02 used in our paper [1] in each sub-folder such as `bm1`, `bm2`, etc., while `error_ratio5` contains the output files for all the benchmarks with error ratio 0.05 used in our paper [1] in each sub-folder such as `bm1`, `bm2`, etc..
 
 If you have any questions or suggestions, please feel free to eamil to xuan.wang@sjtu.edu.cn, thanks!
