@@ -42,22 +42,22 @@ Reference papers:
   - GCC C++ Linker->Libraries(-l)->Add： `z3`;
 
 ### Input Format
-- `errorBound` : the MED error bound of the approximate 4-2 compressors. 
-The inputs are set as uniformly distributed. For each existing design, we calculate its MED e_b. Then, MinAC is applied to synthesize approximate 4-2 compressors with MED no more than e_b.  Below is the MED of approximate 4-2 compressors from Reference papers.
+- `errorBound e_b` : the MED error bound of the approximate 4-2 compressors.  
+In our experiment, the inputs are set as uniformly distributed. Thus, the error bound `errorBound e_b` is represented as `e_b/256`, where the numerator is an integer. For each existing design, we calculate its MED e_b. Then, MinAC is applied to synthesize approximate 4-2 compressors with MED no more than e_b.  Below is the MED of approximate 4-2 compressors from Reference papers.
    ```
    approximate 4-2 compressors    MED
     -------------------------------------
-    Momeni[3]                    100/256
-    Venka[4]                     37/256
-    Yang1[5]                     1/256
-    Yang2[5]                     10/256
-    Yang3[5]                     16/256
-    Lin[2]                       2/256
-    Ha[6]                        16/256
-    Akbar1[7]                    116/256
-    Akbar2[7]                    38/256
-    Ahma[8]                      55/256
-    Strollo[9]                   4/256
+    Momeni[3]                    100
+    Venka[4]                     37
+    Yang1[5]                     1
+    Yang2[5]                     10
+    Yang3[5]                     16
+    Lin[2]                       2
+    Ha[6]                        16
+    Akbar1[7]                    116
+    Akbar2[7]                    38
+    Ahma[8]                      55
+    Strollo[9]                   4
    ```
 
 If you have any questions or suggestions, please feel free to eamil to xuan.wang@sjtu.edu.cn, thanks!
