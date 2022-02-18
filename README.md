@@ -71,7 +71,7 @@ In our experiment, the inputs are set as uniformly distributed. Thus, the error 
 |     |----nangate_45nm_typ.lib
 |     |----gate_multiple_output.txt(the gate library after extending nangate_45nm_typ.lib)
 |----input_dir
-|     |----vector42.txt (the PO number, PI number, and the truth table of the exact 4-2 compressor)
+|     |----vector42.txt (the PO number, PI number-PO number, and the truth table of the exact 4-2 compressor)
 |----temp_dir
 |     |----(temporary files)
 |----output_MinAC
