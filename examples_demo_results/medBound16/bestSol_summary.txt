@@ -1,0 +1,3 @@
+The optimal ASCP is stored in solution0.v
+The optimal gate number is: 3, and the optimal area is: 5.05
+
