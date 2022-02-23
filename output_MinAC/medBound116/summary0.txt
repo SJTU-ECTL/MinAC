@@ -1,3 +1,0 @@
-Real error rate: 8, Real med: 112
-The truth table of the approximate 4-2 compressor: 
-"00", "01", "00", "01", "10", "11", "10", "11", "10", "11", "10", "11", "10", "11", "10", "11", 
