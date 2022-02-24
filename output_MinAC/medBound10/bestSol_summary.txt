@@ -1,0 +1,3 @@
+The optimal solution is stored in solution2.v
+The optimal gate number is: 5, and the optimal area is: 5.58
+
