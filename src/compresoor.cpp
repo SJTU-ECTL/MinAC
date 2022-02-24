@@ -30,7 +30,8 @@ int main(int argc, char* argv[]){
     getline(ifs, line); // first line
     stringstream ss;
     ss << line;
-    ss >> variableNumber >> accuracy;
+    ss >> accuracy >> variableNumber;
+    accuracy -= variableNumber;
 
     ss.str(string());
     ss.clear();
@@ -46,8 +47,8 @@ int main(int argc, char* argv[]){
 	strcat(outputDir, std::to_string(errorBound).data());
 	strcat(outputDir, "/");
 
-    cout << "Variable number: " << variableNumber << endl;
-    cout << "Accuracy: " << accuracy << endl;
+//    cout << "Variable number: " << variableNumber << endl;
+//    cout << "Accuracy: " << accuracy << endl;
     cout << "Error bound: " << errorBound << endl;
     cout << "The accurate outputs: ";
     for (auto f : featureVector)
@@ -180,7 +181,7 @@ int main(int argc, char* argv[]){
             }
         }
 
-    //    for(A0 = 16; A0 > 0;){
+//        for(A0 = 18; A0 > 0;){
         for(A0 = A0-1; A0 > 0;){
             cout << "gate Number:" << gate << ", ";
             cout << "with circuit area:" << A0 << endl;
@@ -240,7 +241,7 @@ int main(int argc, char* argv[]){
 	 strcat(sol, "bestSol_summary");
 	 strcat(sol, ".txt");
 	 ofstream out(sol);
-	 out << "The optimal ASCP is stored in solution" << minPos - areaSet.begin() << ".v" << endl;
+	 out << "The optimal solution is stored in solution" << minPos - areaSet.begin() << ".v" << endl;
      out << "The optimal gate number is: " << gateNumSet[minPos - areaSet.begin()];
 	 out << ", and the optimal area is: " << *minPos << endl << endl;   
 

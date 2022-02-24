@@ -1317,9 +1317,9 @@ int ConstructClause::SMTSolverSingleSol(context& c, solver& s, int maxIterationP
                 p.set(":timeout", 700000u);
             }
             else if(gate == 5){
-                p.set(":timeout", 25200000u);
+                p.set(":timeout", 25252000u);
             }
-			
+
 			s.set(p);
 
 //           auto start = chrono::system_clock::now();
