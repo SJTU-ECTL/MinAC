@@ -97,17 +97,18 @@ In our experiment, the inputs are set as uniformly distributed. Thus, the error 
 - `input_dir`: contains the input file called vector42.txt.
    Format of each row in the `vector42`.txt file:
 ```
-   First row: PO number PI number-PO number
+   First row: (PI number) (PO number)
    Second row: the truth table of the exact 4-2 compressor, which is represented as the binary encoded number of all PO values.
 ```
 - `temp_dir`: contains temporary files generated during the running of the program.
 - `output_MinAC`: contains ten sub-folders with different MED bound `e_b`. For each sub-folder, it contains the following files:
   - `bestSol_summary.txt`: the overall summary of the best solution with minimal area.
-  - `solution<num>.v`: the gate-level Verilog file for the solution with number `<num>`.
-  - `summary<num>.v`: the summary of the solution with number `<num>`.
+  - `solution<num>.v`: the gate-level Verilog file for the solution with number `<num>`. 
+  - `summary<num>.txt`: the summary of the solution with number `<num>`.  
+  Different `solution<num>.v` are the solution Verilog files with different gate numbers. `solution0.v` is the verilog file with the smallest gate number `r_min` which satisfies the error requirement. Other verilog files `solution<num>.v` are the circuit with gate number `r_min+num` which satisfy the error requirement. For these Verilog files, we choose the circuit with the smallest area as the best solution, and the summary of the best solution is stored in `bestSol_summary.txt`.
 - `examples_demo_results`: contains ten sub-folders with different MED bound `e_b`. The MED bound `e_b` is set as our paper [1]. For each sub-folder, it contains the following files:
   - `bestSol_summary.txt`: the overall summary of the best solution with minimal area.
   - `solution<num>.v`: the gate-level Verilog file for the solution with number `<num>`.
-  - `summary<num>.v`: the summary of the solution with number `<num>`.
+  - `summary<num>.txt`: the summary of the solution with number `<num>`.
 
 If you have any questions or suggestions, please feel free to eamil to xuan.wang@sjtu.edu.cn, thanks!
